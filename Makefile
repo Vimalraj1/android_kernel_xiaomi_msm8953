@@ -411,6 +411,18 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 # Optimization for Kryo
 KBUILD_CFLAGS	+= -mcpu=cortex-a53+crc+crypto
 
+# Katchin optimization setup
+KBUILD_CFLAGS	+= -Ofast -g0 -DNDEBUG \
+		   -fgraphite \
+		   -fgraphite-identity \
+		   -fivopts \
+		   -floop-block \
+		   -floop-interchange \
+		   -floop-strip-mine \
+		   -fomit-frame-pointer \
+		   -ftree-loop-distribution \
+		   -ftree-loop-linear
+
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
 KBUILD_AFLAGS   := -D__ASSEMBLY__
